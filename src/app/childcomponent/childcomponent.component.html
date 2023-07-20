@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="card ">
+      <h4>{{ question.question }}</h4>
+      <ng-container *ngIf="question.type === 'dropdown'">
+        <mat-form-field appearance="fill">
+          <mat-label>Select your answer</mat-label>
+          <mat-select [(ngModel)]="answer" (selectionChange)="toggleSubQuestions()">
+            <mat-option *ngFor="let option of question.options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+  
+      <ng-container *ngIf="question.type === 'textinput'">
+        <mat-form-field>
+          <input matInput [(ngModel)]="answer" (input)="toggleSubQuestions()" />
+        </mat-form-field>
+      </ng-container>
+  
+      <div *ngIf="showSubQuestions">
+        <app-childcomponent *ngFor="let subQuestion of question.subQue" [question]="subQuestion"></app-childcomponent>
+      </div>
+    </div>
+  </div>

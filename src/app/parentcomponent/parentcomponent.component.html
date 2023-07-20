@@ -1,0 +1,8 @@
+<div class="container mt-5 d-flex justify-content-center" >
+    <div class="card w-50 text-center" style="box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+        <div class="row">
+            <h2>Quiz Form</h2>
+            <app-childcomponent *ngFor="let question of questions" [question]="question"></app-childcomponent>
+        </div>
+    </div>
+</div>
