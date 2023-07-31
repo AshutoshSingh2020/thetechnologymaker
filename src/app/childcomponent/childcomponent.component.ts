@@ -17,11 +17,10 @@ export class ChildcomponentComponent {
     this.answer = undefined;
   }
 
-  toggleSubQuestions(selectedOption: string) {
-    if (selectedOption === 'Apple') {
-      this.showSubQuestions = true;
-    } else {
-      this.showSubQuestions = false;
+  toggleSubQuestions(selectedOption: string | undefined) {
+    this.showSubQuestions = this.question.subQue?.some(subQuestion => subQuestion.showIf === selectedOption) || false;
+
+    if (!this.showSubQuestions) {
       this.answer = undefined;
     }
   }
