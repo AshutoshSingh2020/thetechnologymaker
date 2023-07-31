@@ -14,7 +14,7 @@
   
     <ng-container *ngIf="question.type === 'textinput'">
       <mat-form-field>
-        <input matInput [(ngModel)]="answer" (input)="toggleSubQuestions('Apple')" />
+        <input matInput [(ngModel)]="answer" (input)="toggleSubQuestions(answer)" />
       </mat-form-field>
     </ng-container>
   
