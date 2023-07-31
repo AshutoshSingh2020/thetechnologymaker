@@ -1,29 +1,28 @@
-import { Component, OnInit, Input ,SimpleChanges } from '@angular/core';
-import { Question } from '../quiz.data';
+import { Component, Input } from '@angular/core';
+import { Question, SubQuestion } from '../quiz.data';
 
 @Component({
   selector: 'app-childcomponent',
   templateUrl: './childcomponent.component.html',
   styleUrls: ['./childcomponent.component.css']
 })
-export class ChildcomponentComponent implements OnInit {
+export class ChildcomponentComponent {
 
-  // constructor( private questions: Question) { }
   @Input() question!: Question;
-  answer!: string;
+  answer: string | undefined;
   showSubQuestions = false;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['question'] && changes['question'].currentValue) {
+  ngOnChanges() {
+    this.showSubQuestions = false;
+    this.answer = undefined;
+  }
+
+  toggleSubQuestions(selectedOption: string) {
+    if (selectedOption === 'Apple') {
+      this.showSubQuestions = true;
+    } else {
       this.showSubQuestions = false;
-      this.answer = '';
+      this.answer = undefined;
     }
   }
-
-  toggleSubQuestions() {
-    this.showSubQuestions = !this.showSubQuestions;
-  }
-  ngOnInit(): void {
-  }
-
 }
