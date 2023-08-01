@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Question, SubQuestion } from '../quiz.data';
-
 @Component({
   selector: 'app-childcomponent',
   templateUrl: './childcomponent.component.html',
@@ -8,17 +6,28 @@ import { Question, SubQuestion } from '../quiz.data';
 })
 export class ChildcomponentComponent {
 
-  @Input() question!: Question;
+  @Input() question!: any;
+  @Input() selectedOption: string | undefined;
   answer: string | undefined;
+  subQuestion !: any;
   showSubQuestions = false;
 
-  ngOnChanges() {
-    this.showSubQuestions = false;
-    this.answer = undefined;
-  }
+  // ngOnChanges() {
+  //   this.showSubQuestions = false;
+  //   this.answer = undefined;
+  // }
+
+  // toggleSubQuestions(selectedOption: string | undefined) {
+  //   this.showSubQuestions = this.question.subQue?.some((subQuestion: any) => subQuestion.showIf === selectedOption) || false;
+
+  //   if (!this.showSubQuestions) {
+  //     this.answer = undefined;
+  //   }
+  // }
+
 
   toggleSubQuestions(selectedOption: string | undefined) {
-    this.showSubQuestions = this.question.subQue?.some(subQuestion => subQuestion.showIf === selectedOption) || false;
+    this.showSubQuestions = this.question.subQue?.some((subQuestion: any) => subQuestion.showIf === selectedOption) || false;
 
     if (!this.showSubQuestions) {
       this.answer = undefined;
